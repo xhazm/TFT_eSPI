@@ -43,7 +43,7 @@ void    TFT_eSPI_Pressable::initPressable(TFT_eSPI *gfx, int16_t x, int16_t y, u
   _currState = 0;
 }
 
-bool    TFT_eSPI_Pressable::contains(int16_t x, int16_t y) const
+bool    TFT_eSPI_Pressable::contains(uint16_t x, uint16_t y) const
 {
   return ((x >= _x) && (x < (_x + _w)) &&
           (y >= _y) && (y < (_y + _h)));

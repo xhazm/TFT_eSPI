@@ -14,7 +14,7 @@ class TFT_eSPI_Pressable: protected TFT_eSPI
 
     void    initPressable(TFT_eSPI *gfx, int16_t x, int16_t y, uint16_t w, uint16_t h, pressFn);
 
-    bool    contains(int16_t x, int16_t y) const;
+    bool    contains(uint16_t x, uint16_t y) const;
 
     virtual void     press(bool p);
     virtual bool     isPressed() const;
