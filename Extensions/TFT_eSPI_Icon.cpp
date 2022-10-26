@@ -1,4 +1,5 @@
 #include "TFT_eSPI_Icon.h"
+#include <stdlib.h>
 
 TFT_eSPI_Icon::TFT_eSPI_Icon(void)
 {}
@@ -56,6 +57,12 @@ void    TFT_eSPI_Icon::drawXBitmap(int iconState) const
   if (_bitmap[iconState] == NULL)
     return ;
   _gfx->drawXBitmap(_x, _y, _bitmap[iconState], _w, _h, _fgColor, _bgColor);
+}
+
+void    TFT_eSPI_Icon::changeColor(uint16_t iconColor, uint16_t backgroundColor)
+{
+  _fgColor = iconColor;
+  _bgColor = backgroundColor;
 }
 
 void    TFT_eSPI_Icon::press(bool p)

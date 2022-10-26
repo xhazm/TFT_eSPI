@@ -17,6 +17,8 @@ class TFT_eSPI_Icon: public TFT_eSPI_Pressable
                      const uint8_t *bitmap2, uint16_t outline, uint16_t fill, uint16_t iconcolor, pressFn);
 
     void    drawXBitmap(int iconState) const;
+    void    changeColor(uint16_t iconColor, uint16_t  backgroundColor);
+
 
     void     press(bool p);
 
