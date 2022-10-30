@@ -52,11 +52,14 @@ void    TFT_eSPI_Icon::initIcon(TFT_eSPI *gfx, int16_t x, int16_t y, uint16_t w,
   _iconState = 0;
 }
 
-void    TFT_eSPI_Icon::drawXBitmap(int iconState) const
+void    TFT_eSPI_Icon::drawXBitmap(int iconState, bool ignoreBackground) const
 {
   if (_bitmap[iconState] == NULL)
     return ;
-  _gfx->drawXBitmap(_x, _y, _bitmap[iconState], _w, _h, _fgColor, _bgColor);
+  if (ignoreBackground == true)
+    _gfx->drawXBitmap(_x, _y, _bitmap[iconState], _w, _h, _fgColor);
+  if (ignoreBackground == false)
+    _gfx->drawXBitmap(_x, _y, _bitmap[iconState], _w, _h, _fgColor, _bgColor);
 }
 
 void    TFT_eSPI_Icon::changeColor(uint16_t iconColor, uint16_t backgroundColor)
@@ -73,5 +76,5 @@ void    TFT_eSPI_Icon::press(bool p)
   else
     _currState = this->_pressFn();
   if (_lastState != _currState)
-    this->drawXBitmap(_currState);
+    this->drawXBitmap(_currState, false);
 }
