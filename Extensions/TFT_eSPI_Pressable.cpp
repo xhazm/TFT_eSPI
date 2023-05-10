@@ -52,7 +52,10 @@ bool    TFT_eSPI_Pressable::contains(uint16_t x, uint16_t y) const
 void    TFT_eSPI_Pressable::press(bool p)
 {
   _lastState = _currState;
-  _currState = this->_pressFn();
+  if (this->_pressFn == NULL)
+    _currState = !_lastState;
+  else
+    _currState = this->_pressFn();
 }
 
 bool TFT_eSPI_Pressable::isPressed() const   { return (_currState); }
